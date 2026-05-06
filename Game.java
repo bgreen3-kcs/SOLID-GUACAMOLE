@@ -380,8 +380,8 @@ public class Game extends JFrame implements Runnable {
         if (verbosity >= 3) System.out.println("\nTHE ONE EYED MAN IS KING\n");
         System.out.print("TRUE : ADDITIVE | FALSE : SUBTRACTIVE\nCOLLAPSE TYPE\n > ");
         additiveCollapse = uI.nextBoolean();
-        System.out.print("ENTER SEED OR NOTHING FOR RANDOM SEED\n > ");
-        try {seed=Double.parseDouble("0."+uI.nextLine());} catch(Exception e) {seed=Math.random();}
+        System.out.print("ENTER SEED OR ANY LETTER FOR RANDOM SEED\n > ");
+        try {seed=Double.parseDouble("0."+uI.next());} catch(Exception e) {seed=Math.random();}
         
         System.out.println("\n\n\n\n\nAND SO IT BEGINS");
         map = mapGenerator(4, 4);
