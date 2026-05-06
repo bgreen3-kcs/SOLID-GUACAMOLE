@@ -27,6 +27,7 @@ public class Game extends JFrame implements Runnable {
 
     static boolean found = false;
     static boolean additiveCollapse = true;
+    static double seed;
 
     public static int[][] mapGenerator(int ensureX, int ensureY) {
         int currX = ensureX;
@@ -62,7 +63,7 @@ public class Game extends JFrame implements Runnable {
 
         boolean badBooty = false;
 
-        for (int i = 1; i < (int) (Math.random() * 200 + 300); i++) {
+        for (int i = 1; i < (int) (seed * 200 + 300); i++) {
             if (currY > mapHeight - 1) {
                 currY = 4;
             }
@@ -81,7 +82,8 @@ public class Game extends JFrame implements Runnable {
                 furthestCoordY = currY;
             }
             mtrt[currY][currX] = 0;
-            double rng = Math.random();
+            double rng = (seed * 45 % 30);
+            rng-=(int)rng;
             if (rng < 0.25) {
                 currY++;
                 mtrt[currY][currX] = 0;
@@ -210,31 +212,6 @@ public class Game extends JFrame implements Runnable {
     public ArrayList<Texture> textures;
     public Camera camera;
     public Screen screen;
-    /*
-	 * public static int[][] map =
-	 * {
-	 * {1,1,1,1,1,1,1,1,2,2,2,2,2,2,2},
-	 * {1,0,0,0,0,0,0,0,2,0,0,0,0,0,2},
-	 * {1,0,3,3,3,3,3,0,0,0,0,0,0,0,2},
-	 * {1,0,3,0,0,0,3,0,2,0,0,0,0,0,2},
-	 * {1,0,3,0,0,0,3,0,2,2,2,0,2,2,2},
-	 * {1,0,3,0,0,0,3,0,2,0,0,0,0,0,2},
-	 * {1,0,3,3,0,3,3,0,2,0,0,0,0,0,2},
-	 * {1,0,0,0,0,0,0,0,2,0,0,0,0,0,2},
-	 * {1,1,1,1,1,1,1,1,4,4,4,0,4,4,4},
-	 * {1,0,0,0,0,0,1,4,0,0,0,0,0,0,4},
-	 * {1,0,0,0,0,0,1,4,0,0,0,0,0,0,4},
-	 * {1,0,0,0,0,0,1,4,0,3,3,3,3,0,4},
-	 * {1,0,0,0,0,0,1,4,0,3,3,3,3,0,4},
-	 * {1,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
-	 * {1,1,1,1,1,1,1,4,4,4,4,4,4,4,4}
-	 * };
-     */
-    // 0: right (LIM)
-    // 1: left
-    // 2: back (LIM)
-    // 3: forward
-    // 4: reset
     public static int[][] map;
 
     public Game(double x, double y) {
@@ -403,6 +380,9 @@ public class Game extends JFrame implements Runnable {
         if (verbosity >= 3) System.out.println("\nTHE ONE EYED MAN IS KING\n");
         System.out.print("TRUE : ADDITIVE | FALSE : SUBTRACTIVE\nCOLLAPSE TYPE\n > ");
         additiveCollapse = uI.nextBoolean();
+        System.out.print("ENTER SEED OR NOTHING FOR RANDOM SEED\n > ");
+        try {seed=Double.parseDouble("0."+uI.nextLine());} catch(Exception e) {seed=Math.random();}
+        
         System.out.println("\n\n\n\n\nAND SO IT BEGINS");
         map = mapGenerator(4, 4);
         game = new Game(4.5, 4.5);
