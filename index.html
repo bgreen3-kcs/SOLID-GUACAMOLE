@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Djibouti Caves</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            font-family: 'Courier New', monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        
+        #gameContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        #setupScreen {
+            background-color: #111;
+            padding: 30px;
+            border: 2px solid #fff;
+            max-width: 600px;
+            text-align: center;
+        }
+        
+        #setupScreen h1 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+        
+        .option-group {
+            margin: 20px 0;
+            text-align: left;
+        }
+        
+        .option-group label {
+            display: block;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+        
+        .option-group input[type="radio"] {
+            margin-right: 10px;
+        }
+        
+        button {
+            background-color: #fff;
+            color: #000;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-family: 'Courier New', monospace;
+            cursor: pointer;
+            margin-top: 20px;
+            letter-spacing: 1px;
+        }
+        
+        button:hover {
+            background-color: #ccc;
+        }
+        
+        #gameCanvas {
+            border: 2px solid #fff;
+            display: none;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+        }
+        
+        #console {
+            width: 640px;
+            height: 150px;
+            background-color: #000;
+            border: 2px solid #fff;
+            padding: 10px;
+            overflow-y: auto;
+            font-size: 12px;
+            display: none;
+        }
+        
+        .console-line {
+            margin: 2px 0;
+        }
+        
+        #controls {
+            text-align: center;
+            display: none;
+            margin-top: 10px;
+        }
+        
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div id="gameContainer">
+        <div id="setupScreen">
+            <h1>DJIBOUTI CAVES</h1>
+            
+            <div class="option-group">
+                <h3>INFORMATION VERBOSITY</h3>
+                <label><input type="radio" name="verbosity" value="0" checked> 0 : DEBUG</label>
+                <label><input type="radio" name="verbosity" value="1"> 1 : ASSISTED</label>
+                <label><input type="radio" name="verbosity" value="2"> 2 : UNASSISTED</label>
+                <label><input type="radio" name="verbosity" value="3"> 3 : IN THE LAND OF THE BLIND</label>
+            </div>
+            
+            <div class="option-group">
+                <h3>COLLAPSE TYPE</h3>
+                <label><input type="radio" name="collapse" value="true" checked> TRUE : ADDITIVE</label>
+                <label><input type="radio" name="collapse" value="false"> FALSE : SUBTRACTIVE</label>
+            </div>
+            
+            <button onclick="startGame()">AND SO IT BEGINS</button>
+        </div>
+        
+        <canvas id="gameCanvas" width="640" height="480"></canvas>
+        <div id="console"></div>
+        <div id="controls">
+            <p>Arrow Keys: Move and Turn | ESC: Restart</p>
+        </div>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>

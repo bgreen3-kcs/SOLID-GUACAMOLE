@@ -1,4 +1,11 @@
-You need a Java compiler that allows for *JavaFX swing* and a terminal that accepts input readable by a Java scanner.
+# Djibouti Caves
+
+## Play Online
+**[Play the web version here!](https://thecrazy8.github.io/SOLID-GUACAMOLE/)**
+
+## Requirements
+- **Web Version**: Any modern web browser with JavaScript enabled
+- **Java Version**: You need a Java compiler that allows for *JavaFX swing* and a terminal that accepts input readable by a Java scanner.
 
 
 **BASICS**
